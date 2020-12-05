@@ -1,0 +1,26 @@
+<div>
+  <div class="md-form">
+    <input type="search" [(ngModel)]="searchText" placeholder="Search text" class="search-box">
+    <button (click)="onClick()">Search</button>
+  </div>
+ 
+  <div *ngIf="!loading">
+    <div *ngFor="let item of result; let listIndex=index">
+      <div (click)="expandOrCollapseRow(listIndex)">
+        <div *ngIf="!item.expanded" class="myRowStyle">
+          <p>{{item.title}}</p>
+        </div>
+        <div *ngIf="item.expanded" class="myRowStyle">
+          <p [innerHTML]="item.loadedPage"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div *ngIf="loading">
+    <div class="loader"></div>
+  </div>
+</div>
+
+
