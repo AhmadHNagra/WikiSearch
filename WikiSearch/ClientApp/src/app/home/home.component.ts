@@ -13,6 +13,7 @@ export class HomeComponent {
   loadedPage: string = '';
   result = new Array<any>();
   loading: boolean = false;
+  showButton: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -29,13 +30,19 @@ export class HomeComponent {
         });
       });
       this.loading = false;
+      this.showButton = true;
     });
   }
 
   ngDoCheck() {
     if (!this.searchText) {
       this.result = [];
+      this.showButton = false;
     }
+  }
+
+  onNext() {
+
   }
 
   public expandOrCollapseRow(index) {
