@@ -42,8 +42,6 @@ namespace WikiSearch.Controllers
         }
 
         // PUT: api/SearchHistories/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSearchHistory(int id, SearchHistory searchHistory)
         {
@@ -74,11 +72,10 @@ namespace WikiSearch.Controllers
         }
 
         // POST: api/SearchHistories
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<SearchHistory>> PostSearchHistory(SearchHistory searchHistory)
         {
+            searchHistory.DateCreated = DateTime.Now;
             _context.SearchHistories.Add(searchHistory);
             await _context.SaveChangesAsync();
 
